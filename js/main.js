@@ -40,3 +40,18 @@ console.log('numbers ===', numbers);
 //   {index: 1, reiksme: 2}
 //    ...
 // ]
+
+const objArr = numbers.map((reiksme, index) => {
+  return {
+    index,
+    reiksme,
+  };
+});
+// const objArr = numbers.map((reiksme, index) => ({index, reiksme}));
+console.log('objArr ===', objArr);
+
+
+// 8. sukurti funkcija generateRandomArr(lenght, min, max)
+// pagaminti random masyva kuriame butu tiek nariu kiek yra length, 
+// ir ju reikmess butu nuo min iki max suapvalinto iki 2sk po kablelio
+// generateRandomArr(10, -50, 100)

@@ -52,6 +52,7 @@ const students = [
 
 // taikomes
 const appEl = document.getElementById('app');
+const filterSelectEl = document.getElementById('towns');
 
 // st1. sugeneruoti studentu nerikiuota sarasa htmle kuriame butu studentu vardai
 // const ulEl = document.createElement('ul');
@@ -71,22 +72,33 @@ const appEl = document.getElementById('app');
 // appEl.append(ulEl)
 
 function generateList(arr, listType = 'ul') {
+  // issivalom konteineri 
+  appEl.innerHTML = ''
   const ulEl = document.createElement(listType === 'ol' ? 'ol' : 'ul');
   const mappedValues = arr.map((stObj) => `<li>${stObj.name}, -- ${stObj.town} </li>`).join('')
   ulEl.insertAdjacentHTML('afterbegin', mappedValues)
   appEl.append(ulEl)
 }
 generateList(students, 'ol')
-generateList(students)
+generateList(getStudentsFrom('Vilnius'), 'ol')
 
 
 // st1.1 parasyti funkcija kuri atlieka [st1]
 
 // st2. Parasyti funkcija, kuriai paduodam miesta kaip argumenta ir ji atrenka/grazina studentus is to miesto
-// getStudentsFrom('Kaunas')
+function getStudentsFrom(town) {
+  return students.filter((stObj) => stObj.town.toLowerCase() === town.toLowerCase())
+}
+const kaunas =  getStudentsFrom('Kaunas')
+console.log('kaunas ===', kaunas);
 
 // st2.1 padaryti kad veiktu filtras
+filterSelectEl.addEventListener('change', (e) => {
+  console.log('filterSelectEl change', e.target.value);
+  const selectedTown = e.target.value
+  generateList(getStudentsFrom(selectedTown))
 
+})
 // st3. Parasyti funkcija, kuriai paduodam amziu kaip argumenta ir ji atrenka studentus kuriu amzius didesnis uz argumenta.
 
 // st4. sukurti funkcija kuri sukuria ir prideda kiekvienam li elementui button <button>delete</button>

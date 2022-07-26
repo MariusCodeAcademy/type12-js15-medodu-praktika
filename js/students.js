@@ -50,7 +50,24 @@ const students = [
   },
 ];
 
+// taikomes
+const appEl = document.getElementById('app');
+
 // st1. sugeneruoti studentu nerikiuota sarasa htmle kuriame butu studentu vardai
+const ulEl = document.createElement('ul');
+students.forEach((stObj) => {
+  const liEl = document.createElement('li');
+  liEl.textContent = stObj.name;
+  ulEl.append(liEl)
+})
+
+
+const mappedValues = "<li>James</li><li>Jill</li><li>Mike</li><li>Jane</li><li>Jannet</li><li>Cory</li><li>Minks</li>"
+
+appEl.append(ulEl)
+
+
+
 // st1.1 parasyti funkcija kuri atlieka [st1]
 
 // st2. Parasyti funkcija, kuriai paduodam miesta kaip argumenta ir ji atrenka/grazina studentus is to miesto

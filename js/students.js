@@ -72,7 +72,7 @@ const appEl = document.getElementById('app');
 
 function generateList(arr, listType = 'ul') {
   const ulEl = document.createElement(listType === 'ol' ? 'ol' : 'ul');
-  const mappedValues = arr.map((stObj) => `<li>${stObj.name}</li>`).join('')
+  const mappedValues = arr.map((stObj) => `<li>${stObj.name}, -- ${stObj.town} </li>`).join('')
   ulEl.insertAdjacentHTML('afterbegin', mappedValues)
   appEl.append(ulEl)
 }
@@ -83,7 +83,12 @@ generateList(students)
 // st1.1 parasyti funkcija kuri atlieka [st1]
 
 // st2. Parasyti funkcija, kuriai paduodam miesta kaip argumenta ir ji atrenka/grazina studentus is to miesto
+// getStudentsFrom('Kaunas')
 
 // st2.1 padaryti kad veiktu filtras
 
 // st3. Parasyti funkcija, kuriai paduodam amziu kaip argumenta ir ji atrenka studentus kuriu amzius didesnis uz argumenta.
+
+// st4. sukurti funkcija kuri sukuria ir prideda kiekvienam li elementui button <button>delete</button>
+
+// st4.1 delete paspaudimo metu istrinti studenta is saraso

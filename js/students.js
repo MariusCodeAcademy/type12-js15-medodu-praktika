@@ -62,7 +62,6 @@ const filterSelectEl = document.getElementById('towns');
 //   ulEl.append(liEl)
 // })
 
-
 // const tikslas = "<li>James</li><li>Jill</li><li>Mike</li><li>Jane</li><li>Jannet</li><li>Cory</li><li>Minks</li>"
 
 // const mappedValues = students.map((stObj) => `<li>${stObj.name}</li>`).join('')
@@ -72,41 +71,67 @@ const filterSelectEl = document.getElementById('towns');
 // appEl.append(ulEl)
 
 function generateList(arr, listType = 'ul') {
-  // issivalom konteineri 
-  appEl.innerHTML = ''
+  // issivalom konteineri
+  appEl.innerHTML = '';
   const ulEl = document.createElement(listType === 'ol' ? 'ol' : 'ul');
-  const mappedValues = arr.map((stObj) => `<li>${stObj.name}, -- ${stObj.town} </li>`).join('')
-  ulEl.insertAdjacentHTML('afterbegin', mappedValues)
-  appEl.append(ulEl)
+  const mappedValues = arr.map((stObj) => `<li>${stObj.name}, -- ${stObj.town} </li>`).join('');
+  ulEl.insertAdjacentHTML('afterbegin', mappedValues);
+  appEl.append(ulEl);
 }
-generateList(students, 'ol')
-generateList(getStudentsFrom('Vilnius'), 'ol')
-
+generateList(students, 'ol');
+// generateList(getStudentsFrom('Vilnius'), 'ol');
 
 // st1.1 parasyti funkcija kuri atlieka [st1]
 
 // st2. Parasyti funkcija, kuriai paduodam miesta kaip argumenta ir ji atrenka/grazina studentus is to miesto
 function getStudentsFrom(town) {
-  return students.filter((stObj) => stObj.town.toLowerCase() === town.toLowerCase())
+  return students.filter((stObj) => stObj.town.toLowerCase() === town.toLowerCase());
 }
-const kaunas =  getStudentsFrom('Kaunas')
+const kaunas = getStudentsFrom('Kaunas');
 console.log('kaunas ===', kaunas);
 
 // st2.1 padaryti kad veiktu filtras
 filterSelectEl.addEventListener('change', (e) => {
   console.log('filterSelectEl change', e.target.value);
-  const selectedTown = e.target.value
-  generateList(getStudentsFrom(selectedTown))
-})
+  const selectedTown = e.target.value;
+
+  if (selectedTown === 'all') return generateList(students, 'ol');
+
+  generateList(getStudentsFrom(selectedTown));
+});
 // st3. Parasyti funkcija, kuriai paduodam amziu kaip argumenta ir ji atrenka studentus kuriu amzius didesnis uz argumenta.
 
 // st4. sukurti funkcija kuri sukuria ir prideda kiekvienam li elementui button <button>delete</button>
+addButonsTo();
+function addButonsTo() {
+  // nusitaikyti i sarasa,
+  const listEL = appEl.querySelector('ol');
+  const allLiEl = listEL.querySelectorAll('li');
+  console.log('  allLiEl ===', allLiEl);
+  allLiEl.forEach((liEl) => {
+    const buttonEl = document.createElement('button');
+    buttonEl.textContent = 'delete';
+    buttonEl.addEventListener('click', handleDelete);
+    liEl.append(buttonEl);
+  });
+  // sukurti mygtuka
+  // sudeti mygtyukus visiems li
+}
 
 // st4.1 delete paspaudimo metu istrinti studenta is saraso
 
 // st5. padaryti kad irasius amziu ir paspaudus filtruoti atrinktu tik tuos zmones kuriu amzius lygus irasytam
-{/* <div>
+{
+  /* <div>
       <label for="age">Amzius</label>
       <input type="number" id="age">
       <button>Filtruoti</button>
-    </div> */}
+    </div> */
+}
+
+function handleDelete(event) {
+  console.log('Life is good', event.target);
+  const deleteBtn = event.target;
+  const parentEl = deleteBtn.parentElement;
+  parentEl.remove();
+}

@@ -97,10 +97,16 @@ filterSelectEl.addEventListener('change', (e) => {
   console.log('filterSelectEl change', e.target.value);
   const selectedTown = e.target.value
   generateList(getStudentsFrom(selectedTown))
-
 })
 // st3. Parasyti funkcija, kuriai paduodam amziu kaip argumenta ir ji atrenka studentus kuriu amzius didesnis uz argumenta.
 
 // st4. sukurti funkcija kuri sukuria ir prideda kiekvienam li elementui button <button>delete</button>
 
 // st4.1 delete paspaudimo metu istrinti studenta is saraso
+
+// st5. padaryti kad irasius amziu ir paspaudus filtruoti atrinktu tik tuos zmones kuriu amzius lygus irasytam
+{/* <div>
+      <label for="age">Amzius</label>
+      <input type="number" id="age">
+      <button>Filtruoti</button>
+    </div> */}

@@ -1,0 +1,16 @@
+'use strict';
+console.log('main.js');
+
+const numbers = [1, 2, 3, 5.3, 8, -8, -5.5, -6, -16, -5, -9, 4.2, 5, 12, -6, 45];
+
+// 1. rasti didziausia skaiciu su reduce
+
+// 2. Sukurkite ir atvaizduokite masyvą su dvigubomis reikšmėmis;
+
+// 3. Sukurkite ir atvaizduokite masyvą su reikšmėmis padaugintomis iš jų vietos masyve indekso
+
+// 4. I nauja masyva atrinkti vertes didesnes uz 3
+
+// 5. grazinti nauja masyva su Suapvalintom reikšmem iki sveikų skaičių
+
+// 6. Atrinkti kas antrą elementą į naują masyvą(ne su for i)

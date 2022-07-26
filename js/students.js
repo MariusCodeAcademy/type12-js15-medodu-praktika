@@ -54,22 +54,36 @@ const students = [
 const appEl = document.getElementById('app');
 
 // st1. sugeneruoti studentu nerikiuota sarasa htmle kuriame butu studentu vardai
-const ulEl = document.createElement('ul');
-students.forEach((stObj) => {
-  const liEl = document.createElement('li');
-  liEl.textContent = stObj.name;
-  ulEl.append(liEl)
-})
+// const ulEl = document.createElement('ul');
+// students.forEach((stObj) => {
+//   const liEl = document.createElement('li');
+//   liEl.textContent = stObj.name;
+//   ulEl.append(liEl)
+// })
 
 
-const mappedValues = "<li>James</li><li>Jill</li><li>Mike</li><li>Jane</li><li>Jannet</li><li>Cory</li><li>Minks</li>"
+// const tikslas = "<li>James</li><li>Jill</li><li>Mike</li><li>Jane</li><li>Jannet</li><li>Cory</li><li>Minks</li>"
 
-appEl.append(ulEl)
+// const mappedValues = students.map((stObj) => `<li>${stObj.name}</li>`).join('')
+// console.log('mappedValues ===', mappedValues);
+// ulEl.insertAdjacentHTML('afterbegin', mappedValues)
 
+// appEl.append(ulEl)
+
+function generateList(arr, listType = 'ul') {
+  const ulEl = document.createElement(listType === 'ol' ? 'ol' : 'ul');
+  const mappedValues = arr.map((stObj) => `<li>${stObj.name}</li>`).join('')
+  ulEl.insertAdjacentHTML('afterbegin', mappedValues)
+  appEl.append(ulEl)
+}
+generateList(students, 'ol')
+generateList(students)
 
 
 // st1.1 parasyti funkcija kuri atlieka [st1]
 
 // st2. Parasyti funkcija, kuriai paduodam miesta kaip argumenta ir ji atrenka/grazina studentus is to miesto
+
+// st2.1 padaryti kad veiktu filtras
 
 // st3. Parasyti funkcija, kuriai paduodam amziu kaip argumenta ir ji atrenka studentus kuriu amzius didesnis uz argumenta.
